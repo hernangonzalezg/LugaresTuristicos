@@ -25,7 +25,7 @@
                                 var descrip= data.datos[i].regi_nombre;
                                 textonuevo = descrip.substr(0,15);
                                     console.log(textonuevo.length);
-                                fila ='<a href="opcion1.html?id='+data.datos[i].regi_id+'"><div class="row"><div class="col-xs-4"><img src="'+data.datos[i].regi_urlimagen+'"></div>';
+                                fila ='<a href="lugares.html?id='+data.datos[i].regi_id+'&nombre='+data.datos[i].regi_nombre.replace("/ /g","_")+'"><div class="row"><div class="col-xs-4"><img width="100px" src="'+data.datos[i].regi_urlimagen+'"></div>';
                                 fila +='<div class="col-xs-8">';
                                 fila +='<div class="row"><div class="col-xs-12"><font size="5">'+data.datos[i].regi_nombre+'</font></div></div>';
                                 fila +='<div class="row"><div class="col-xs-12"><font size="4">Region:'+data.datos[i].regi_ordinal+'</font></div></div>';

@@ -2,6 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 	require_once '../modelos/entidadregiones.php';
 	require_once '../modelos/modeloregiones.php';
+	require_once '../modelos/entidadlugares.php';
 
 	$modelr= new ModelRegiones();
 
@@ -16,7 +17,7 @@ header('Access-Control-Allow-Origin: *');
 				break;
 
         case 'obtener':
-            $jsondata = $modelr->Obtener($_REQUEST['ccId']);
+            $jsondata = $modelr->Obtener($_REQUEST['idRegion']);
             header('Content-type: application/json; charset=utf-8');
             echo json_encode($jsondata);            
             break;		

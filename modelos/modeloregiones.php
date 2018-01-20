@@ -42,30 +42,27 @@ class ModelRegiones{
 	public function Obtener($id){
         $jsonresponse = array();
         try{
-            $stm = $this->pdo->prepare("SELECT * FROM cuerposcelestes, categoria 
-            							where categoria_id=cceleste_categoria_id
-                                		AND cceleste_id = ?");
-            $stm->execute(array($id));
-            $r = $stm->fetch(PDO::FETCH_OBJ);
-
-            $regiones = new Regiones();
-					$cuerpocel->__SET('cc_id', $r->cceleste_id);
-					$cuerpocel->__SET('cc_nombre', $r->cceleste_nombre);
-					$cuerpocel->__SET('cc_descripcion', utf8_encode($r->cceleste_descripcion));
-					$cuerpocel->__SET('cc_urlimagenp', $r->cceleste_urlimagen_p);
-					$cuerpocel->__SET('cc_urlimagens', $r->cceleste_urlimagen_s);
-					$cuerpocel->__SET('cc_categoria_id', $r->cceleste_categoria_id);
-	                $cuerpocel->__SET('cc_categoria_nombre', $r->categoria_nombre);
-
-            $jsonresponse['success'] = true;
-            $jsonresponse['message'] = 'Se obtuvo  correctamente';
-            $jsonresponse['datos'] = $cuerpocel->returnArray();
+            $result = array();
+			$stm=$this->pdo->prepare("SELECT * FROM lugares where lugares_regiones_id=?");
+			$stm->execute(array($id));
+			foreach($stm->fetchALL(PDO::FETCH_OBJ) as $r){
+				$lugares = new Lugares();
+					$lugares->__SET('lugares_id', $r->lugares_id);
+					$lugares->__SET('lugares_nombre',  utf8_encode($r->lugares_nombre));
+					$lugares->__SET('lugares_descripcion',  utf8_encode($r->lugares_descripcion));
+					$lugares->__SET('lugares_urlimagen',  $r->lugares_urlimagen);
+					$lugares->__SET('lugares_regiones_id',  $r->lugares_regiones_id);
+				$result[] = $lugares->returnArray();
+			}
+			$responsearray['success']=true;
+			$responsearray['message']='Listado correctamente';
+			$responsearray['datos']=$result;
         } catch (Exception $e){
             //die($e->getMessage());
-            $jsonresponse['success'] = false;
-            $jsonresponse['message'] = 'Error ';             
+            $responsearray['success'] = false;
+            $responsearray['message'] = 'Error ';             
         }
-        return $jsonresponse;
+        return $responsearray;
     }
 }
 ?>

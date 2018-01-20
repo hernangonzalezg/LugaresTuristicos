@@ -6,8 +6,8 @@
     }
     var id = getParameterByName('id');
 
-    function verCuerpoCeleste(action, ccid){
-        var datay = {"ccId": id,
+    function verLugares(){
+        var datay = {"idRegion": id,
                      "Accion":"obtener"
                     };
                     console.log(datay);
@@ -15,7 +15,7 @@
             data: datay, 
             type: "POST",
             dataType: "json", 
-            url: "controllers/controllercceleste.php",
+            url: "controllers/controllerregiones.php",
         })
         .done(function(data,textStatus,jqXHR ) {
             if ( console && console.log ) {
@@ -24,10 +24,16 @@
                     + " \n textStatus : " + textStatus
                     + " \n jqXHR.status : " + jqXHR.status );
             }
-            $("#titulo").text(data.datos.cc_nombre);
-            $("#imgcc").attr("src",data.datos.cc_urlimagenp);
-            $("#descripcion").html(data.datos.cc_descripcion);
-            $("#categoria").html("Categoria : "+data.datos.cc_categoria_nombre);
+            for(var i=0; i<data.datos.length;i++){
+                console.log('id: '+data.datos[i].lugares_id + ' nombre: '+data.datos[i].lugares_nombre);
+                //var descrip= data.datos[i].regi_nombre;
+                //textonuevo = descrip.substr(0,15);
+                //console.log(textonuevo.length);
+                //fila ='<a href="lugares.html?id='+data.datos[i].regi_id+'"><div class="row"><div class="col-xs-4"><img width="100px" src="'+data.datos[i].regi_urlimagen+'"></div>';
+                fila ='<tr><td width="50%"><a href="lugaresDescripcion.html?id='+data.datos[i].lugares_id+'"><img width="70px" src="'+data.datos[i].lugares_urlimagen+'"></div></td>';
+                fila +='<td align="center">'+data.datos[i].lugares_nombre+'</td></tr>';
+                $("#listadoL").append(fila);
+            }
 
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {
@@ -39,7 +45,7 @@
             }
         });
     }
-    verCuerpoCeleste();
+    verLugares();
    /* $(document).ready(function(){
         //funcion para listar los cecostos
         var getlista = function (){
