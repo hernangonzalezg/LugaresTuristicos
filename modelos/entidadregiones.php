@@ -4,6 +4,7 @@ class Regiones{
 	private $regi_id;
 	private $regi_nombre;
 	private $regi_ordinal;
+	private $regi_urlimagen;
 	
 	public function __GET ($k){
 		

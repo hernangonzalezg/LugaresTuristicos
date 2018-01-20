@@ -5,12 +5,13 @@
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
     var id = getParameterByName('id');
+    var nombre = getParameterByName('nombre');
 
     function verLugares(){
         var datay = {"idRegion": id,
                      "Accion":"obtener"
                     };
-                    console.log(datay);
+        console.log(datay);
         $.ajax({
             data: datay, 
             type: "POST",
@@ -33,7 +34,9 @@
                 fila ='<tr><td width="50%"><a href="lugaresDescripcion.html?id='+data.datos[i].lugares_id+'"><img width="70px" src="'+data.datos[i].lugares_urlimagen+'"></div></td>';
                 fila +='<td align="center">'+data.datos[i].lugares_nombre+'</td></tr>';
                 $("#listadoL").append(fila);
+            
             }
+             $("#titulo").append('<h1 class="titulo">'+nombre.replace(/_/g," ")+'</h1>');
 
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {

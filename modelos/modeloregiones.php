@@ -26,6 +26,7 @@ class ModelRegiones{
 					$regiones->__SET('regi_id', $r->regi_id);
 					$regiones->__SET('regi_nombre',  utf8_encode($r->regi_nombre));
 					$regiones->__SET('regi_ordinal',  $r->regi_ordinal);
+					$regiones->__SET('regi_urlimagen',  $r->regi_urlimagen);
 				$result[] = $regiones->returnArray();
 			}
 			$responsearray['success']=true;
