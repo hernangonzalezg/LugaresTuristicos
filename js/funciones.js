@@ -1,6 +1,7 @@
     $(document).ready(function(){
    
         //funcion para listar los cecostos
+        //
         var getlista = function (){
             var datax = {
                 "Accion":"listar"
