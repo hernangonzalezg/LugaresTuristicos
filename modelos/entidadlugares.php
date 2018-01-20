@@ -6,6 +6,7 @@ class Lugares{
 	private $lugares_descripcion;
 	private $lugares_urlimagen;
 	private $lugares_regiones_id;
+	private $regi_nombre;
 	
 	public function __GET ($k){
 		
