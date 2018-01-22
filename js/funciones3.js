@@ -28,6 +28,7 @@
             $("#imgcc").attr("src",data.datos.lugares_urlimagen);
             $("#descripcion").html(data.datos.lugares_descripcion);
             $("#region").html("Region : "+data.datos.regi_nombre);
+            //agrego boton
             $("#link").append("<li><a href='lugares.html?id="+data.datos.lugares_regiones_id+"'>Volver</a></li>");
             
 
