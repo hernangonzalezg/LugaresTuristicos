@@ -27,7 +27,7 @@
             $("#titulo").text(data.datos.lugares_nombre);
             $("#imgcc").attr("src",data.datos.lugares_urlimagen);
             $("#descripcion").html(data.datos.lugares_descripcion);
-            $("#region").html("Region : "+data.datos.regi_nombre);
+            $("#region").html("Región : "+data.datos.regi_nombre);
 
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {
