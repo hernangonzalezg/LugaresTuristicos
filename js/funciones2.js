@@ -33,6 +33,7 @@
             
             }
              $("#titulo").append('<h1 class="titulo">'+nombre.replace(/_/g," ")+'</h1>');
+             $("#titulo").append('</br>');
 
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {
